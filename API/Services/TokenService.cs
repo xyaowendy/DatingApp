@@ -4,7 +4,6 @@ using System.Text;
 using API.Entities;
 using API.Interfaces;
 using Microsoft.IdentityModel.Tokens;
-using JwtRegisteredClaimNames = Microsoft.IdentityModel.JsonWebTokens.JwtRegisteredClaimNames;
 
 namespace API.Services;
 
@@ -12,7 +11,7 @@ public class TokenService : ITokenService
 {
 
     private readonly SymmetricSecurityKey _key;
-    private TokenService(IConfiguration config)
+    public TokenService(IConfiguration config)
     {
         _key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(config["TokenKey"]));
     }
